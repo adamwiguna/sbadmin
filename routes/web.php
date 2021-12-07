@@ -17,32 +17,31 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
 
-Route::get('/login', function () {
-    return view('login');
-});
 Route::post('/login', [LoginController::class, 'authenticate']);
+
+
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::post('logout', [LoginController::class, 'logout']);
 
-    Route::get('/admin', function () {
-        return view('admin.dashboard.index');
-    })->name('admin');
+    Route::middleware('is_admin')
+           ->prefix('admin')
+           ->name('admin.')
+           ->group(function () {
 
-    Route::get('/admin/opd/', function () {
-        return view('admin.opd');
-    });
+        Route::get('dashboard', [App\http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/admin/bidang-bagian/', function () {
-        return view('admin.bidang-bagian');
-    });
+        Route::resource('opd', App\http\Controllers\Admin\OpdController::class);
     
-    // Route::get('/admin/user/', [UserController::class, 'index']);
+        Route::get('bidang-bagian', function () {
+            return view('admin.bidang-bagian');
+        });
+        
+    });
 
-    Route::resource('/admin/user/', UserController::class);
 });
 
 

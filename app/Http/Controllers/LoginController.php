@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\DashboardController;
 
 class LoginController extends Controller
 {
@@ -21,13 +22,13 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if(auth()->user()->is_admin){
-                return redirect()->route('admin');
+                return redirect()->route('admin.dashboard');
             }else{
-                return redirect()->action('user');
+                return redirect()->route('user.dashboard');
             }
         }
 
-        return back()->with('loginError', 'Gagal melakukan Login!!!');
+        return back()->with('loginError', 'Login Gagal!!!');
     }
 
     public function logout(Request $request)

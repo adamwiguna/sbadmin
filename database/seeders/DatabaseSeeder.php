@@ -25,7 +25,18 @@ class DatabaseSeeder extends Seeder
             'division_id' => 0,
             'is_admin' => true,
             'authorization_level' => 100,
-           ]);
+        ]);
+        \App\Models\User::create([
+            'slug' => Str::random(20),
+            'name' => 'Admin',
+            'email' => 'user1',
+            'email_verified_at' => now(),
+            'password' => bcrypt('1234'),
+            'remember_token' => Str::random(10),
+            'division_id' => 0,
+            'is_admin' => false,
+            'authorization_level' => 1,
+        ]);
     
     }
 }

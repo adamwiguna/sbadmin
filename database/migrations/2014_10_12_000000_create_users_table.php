@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('slug')->unique();
             $table->string('division_id')->nullable();
+            $table->string('jabatan')->nullable();
+            $table->string('jabatan_singkatan')->nullable();
             $table->string('is_admin')->boolean();
             $table->integer('authorization_level');
             $table->timestamp('email_verified_at')->nullable();

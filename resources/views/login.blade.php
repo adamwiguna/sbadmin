@@ -40,6 +40,14 @@
                                     <div class="text-center mb-5">
                                         <img src="Lambang_Kabupaten_Tabanan.png" alt="" width="200" height="200">
                                     </div>
+                                    @if (session()->has('loginError'))
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            {!!session('loginError') !!}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @endif
                                     <form class="user" action="/login" method="post">
                                         @csrf
                                         <div class="form-group">
@@ -48,8 +56,8 @@
                                         <div class="form-group">
                                             <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            Login
+                                        <button type="submit" class="btn btn-primary btn-block">
+                                            LOGIN
                                         </button>
                                     </form>
                                         <p class="mt-5 text-muted text-center">© 2021 <br>Tabanan Command Center</p>
