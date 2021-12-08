@@ -7,6 +7,6 @@
     Di halaman ini anda dapat membuat OPD 
 </p>
 
-@livewire('admin.opd')
+@livewire('admin.opd.list-opd')
 
 @endsection

@@ -12,7 +12,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item {{ Route::is('admin.dashboard') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -27,18 +27,38 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item active">
+    <li class="nav-item {{ Route::is(['admin.opd.index', 'admin.user.create', 'admin.user.edit', 'admin.user.index']) ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManajemen"
             aria-expanded="true" aria-controls="collapseManajemen">
             <i class="fas fa-fw fa-cog"></i>
             <span>Manajemen</span>
         </a>
-        <div id="collapseManajemen" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseManajemen" class="collapse {{ Route::is(['admin.opd.index', 'admin.user.create', 'admin.user.edit', 'admin.user.index']) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Pengaturan:</h6>
-                <a class="collapse-item active" href="/admin/opd">OPD</a>
-                <a class="collapse-item" href="/admin/bidang-bagian">Bidang/Bagian</a>
-                <a class="collapse-item" href="/admin/user">User</a>
+                <a class="collapse-item {{ Route::is(['admin.opd.index']) ? 'active' : '' }}" href="{{ route('admin.opd.index') }}">OPD</a>
+                <a class="collapse-item {{ Route::is(['admin.user.index', 'admin.user.create', 'admin.user.edit']) ? 'active' : '' }}" href="{{ route('admin.user.index') }}">User</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        User
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item {{ Route::is(['admin.note.index', 'admin.note.index']) ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNotulen"
+            aria-expanded="true" aria-controls="collapseNotulen">
+            <i class="far fa-sticky-note"></i>
+            <span>Notulen</span>
+        </a>
+        <div id="collapseNotulen" class="collapse {{ Route::is(['admin.note.index', 'admin.note.index', 'admin.note.index']) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Lihat:</h6>
+                <a class="collapse-item {{ Route::is('admin.note.index') ? 'active' : '' }}" href="{{ route('admin.note.index') }}">Semua</a>
+                <a class="collapse-item {{ Route::is('admin.note.index') ? 'active' : '' }}" href="{{ route('admin.note.index') }}">Terhapus</a>
             </div>
         </div>
     </li>

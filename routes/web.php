@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('dashboard', [App\http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('opd', App\http\Controllers\Admin\OpdController::class);
+        Route::resource('user', App\http\Controllers\Admin\UserController::class);
+        Route::resource('note', App\http\Controllers\Admin\NoteController::class);
     
         Route::get('bidang-bagian', function () {
             return view('admin.bidang-bagian');

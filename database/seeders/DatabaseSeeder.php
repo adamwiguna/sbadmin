@@ -37,6 +37,18 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
             'authorization_level' => 1,
         ]);
+        \App\Models\Division::create([
+            'nama' => 'Dinas A',
+            'singkatan' => 'DinA',
+        ]);
+        \App\Models\Division::create([
+            'nama' => 'Dinas B',
+            'singkatan' => 'DinB',
+        ]);
+        \App\Models\Division::create([
+            'nama' => 'Dinas C',
+            'singkatan' => 'DinC',
+        ]);
     
     }
 }

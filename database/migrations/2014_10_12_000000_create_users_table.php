@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('division_id')->nullable();
             $table->string('jabatan')->nullable();
             $table->string('jabatan_singkatan')->nullable();
-            $table->string('is_admin')->boolean();
-            $table->integer('authorization_level');
+            $table->string('is_admin')->boolean()->default(0);
+            $table->integer('authorization_level')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
